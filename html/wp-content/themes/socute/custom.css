@@ -1,0 +1,388 @@
+/**
+ * Your Inspiration Themes
+ * 
+ * In this files the framework register default metaboxes.
+ * 
+ * @package WordPress
+ * @subpackage Your Inspiration Themes
+ * @author Your Inspiration Themes Team <info@yithemes.com>
+ *
+ * This source file is subject to the GNU GENERAL PUBLIC LICENSE (GPL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.gnu.org/licenses/gpl-3.0.txt
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Noticia+Text:400,700,400italic,700italic|Bree+Serif);
+
+/********************************************
+
+In this file you can add your custom CSS.
+It will always override rules in style.css.
+Good work... and good luck! :)
+
+********************************************/
+
+a { color: #696767; }
+a:hover { color: #ef978b !important; }
+.sidebar a { color: #575858; }
+.sidebar a:hover { color: #ef978b; }
+.sidebar span.title-highlight { color: inherit !important; }
+a:hover .title-highlight { color: #ef978b; }
+
+#topbar, #topbar .last-tweets li {
+    background-color: #262524;
+}
+
+#back-top {
+    background-color: #107ba5;
+}
+
+.sidebar .widget_search #searchform .button:hover, .sidebar .widget_search_mini #mini-search-submit:hover, .alt-buttons a:hover, .alt-button:hover, .woocommerce ul.products li.product.grid .buttons-list-wrapper a.button:hover, .woocommerce div.product form.cart .button:hover,
+.woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover,
+.woocommerce #respond input#submit:hover, .woocommerce #content input.button:hover, .woocommerce-page a.button:hover,
+.woocommerce-page button.button:hover, .woocommerce-page input.button:hover,
+.woocommerce-page #respond input#submit:hover, .woocommerce-page #content input.button:hover,
+.woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover,
+.woocommerce #respond input#submit.alt:hover, .woocommerce #content input.button.alt:hover,
+.woocommerce-page a.button.alt:hover, .woocommerce-page button.button.alt:hover,
+.woocommerce-page input.button.alt:hover, .woocommerce-page #respond input#submit.alt:hover,
+.woocommerce-page #content input.button.alt:hover,
+#place_order:hover,
+a.button:hover, button.button:hover, input.button:hover,
+.woocommerce .wishlist_table .product-add-to-cart a.add_to_cart.button.alt:hover,
+.woocommerce .cart-collaterals input[type=submit].button.checkout-button,
+#popupWrap .popup .popup-newsletter-section .input-prepend .submit-field:hover, .btn-button:hover,
+.contact-form li.submit-button input.sendmail:hover, .sidebar .widget_product_search #searchform #searchsubmit:hover {
+    background-color: #107ba5;
+}
+
+h5, h5 a {
+    font-size: 12px;
+    font-family: 'Helvetica', sans-serif;
+    color: #302e2e;
+    font-style: normal;
+    font-weight: 400;
+}
+p, li, address, dd, blockquote, td, th, a,
+body, h1, h2, h3, h4, h5, h6, p, dl, ul, ol,
+.paragraph-links a, #respond input, #respond textarea, #respond p label, #search_mini {
+    color: #302E2E;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.8em;
+}
+#nav ul li, #nav ul li a, #nav ul li a span.special-font, #nav .megamenu ul.sub-menu li.menu-item-custom-content p span.special-font, #header-right-content, .welcome_user a, .wpml a, .cart-items {
+    font-size: 13px;
+    font-family: 'Helvetica', sans-serif;
+    color: #605e5e;
+    font-style: normal;
+    font-weight: 400;
+}
+code, pre { background-color: #E8EBEC; border: 1px dotted #CFCFCF; color: #333333; font: 13px/18px Consolas,"Courier New",Courier,monospace; padding: 0 5px; }
+pre { margin-bottom: 10px; margin-top: 10px; }
+
+.margin-top { margin-top: 10px; }
+.margin-top2 { margin-top: 20px; }
+.margin-bottom { margin-bottom: 20px; }
+.margin-bottom2 { margin-bottom: 40px; }
+
+input, button, select, textarea {
+    font-size: 16px;
+    font-family: 'Helvetica', sans-serif;
+}
+.alt-button, .btn {
+    background-color: #474748;
+    border-color: #474748;
+    font-size: 11px;
+    font-family: 'Helvetica', sans-serif;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 33px;
+    padding: 4px 8px 4px 8px;
+}
+.faq-title h4 {
+	margin: 0px;
+	padding-left: 11px;
+    font-size: 13px;
+    line-height: 23px;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 400;
+}
+div.buttons a {
+    background-color: #ffffff;
+    font-size: 16px;
+    font-family: 'Helvetica', sans-serif;
+    color: #302e2e;
+    font-style: normal;
+    font-weight: 400;
+}
+.woo_cart .yit_cart_widget.widget_shopping_cart .cart_wrapper ul.cart_list li a, .woo_cart .yit_cart_widget.widget_shopping_cart .cart_wrapper .cart_list li.empty, .woo_cart .yit_cart_widget.widget_shopping_cart .cart_wrapper h2 {
+    font-size: 12px;
+    font-family: 'Helvetica', sans-serif;
+    color: #625548;
+    font-style: normal;
+    font-weight: 400;
+}
+#topbar, #topbar p, #topbar a, #topbar li {
+    font-size: 12px;
+    font-family: 'Helvetica', sans-serif;
+    color: #a4a3a3;
+    font-style: normal;
+    font-weight: 400;
+}
+#header #logo #textual, span.logo {
+    font-size: 42px;
+    font-family: 'Helvetica', sans-serif;
+    color: #302e2e;
+    font-style: normal;
+    font-weight: 400;
+}
+#header #logo #textual span {
+    font-size: 42px;
+    font-family: 'Helvetica', sans-serif;
+    color: #b9592a;
+    font-style: normal;
+    font-weight: 400;
+}
+
+#header #logo #tagline {
+    font-size: 12px;
+    font-family: 'Helvetica', sans-serif;
+    color: #696767;
+    font-style: normal;
+    font-weight: 400;
+}
+
+#header #logo #tagline span {
+    font-size: 12px;
+    font-family: 'Helvetica', sans-serif;
+    color: #b9592a;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.post-title, .post-title a, .blog-big .meta .post-title a, .blog-small .meta .post-title a {
+    font-size: 18px;
+    font-family: 'Helvetica', sans-serif;
+    color: #302e2e;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.section.blog .description h3 a {
+    font-size: 16px;
+    font-family: 'Helvetica', sans-serif;
+    color: #000000;
+    font-style: normal;
+    font-weight: 400;
+}
+.recent-post .text > a {
+    font-size: 13px;
+    font-family: 'Helvetica', sans-serif;
+    color: #656464;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.recent-post .text > a:hover {
+    color: #a86e24;
+}
+
+.sidebar .recent-post p, .recent-post p {
+    font-size: 11px;
+    font-family: 'Helvetica', sans-serif;
+    color: #8e8a83;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.recent-post .text > a.read-more {
+    font-size: 13px;
+    font-family: 'Helvetica', sans-serif;
+    color: #1A5B7D;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.recent-post .text > a.read-more:hover {
+    color: #6B0303;
+}
+
+#footer .recent-post .text p.post-comments, .recent-post .text p.post-comments {
+    font-size: 11px;
+    font-family: 'Helvetica', sans-serif;
+    color: #c26511;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.tabs-container ul.tabs li h4 a, .single-product.woocommerce #primary div.product .woocommerce-tabs ul.tabs li a {
+    font-size: 13px;
+    font-family: 'Helvetica', sans-serif;
+    color: #8c8b8b;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.tabs-container ul.tabs li h4 a:hover, .single-product.woocommerce #primary div.product .woocommerce-tabs ul.tabs li a:hover {
+    color: #000000;
+}
+
+.tabs-container ul.tabs li.current h4 a, .single-product.woocommerce #primary div.product .woocommerce-tabs ul.tabs li.active a {
+    color: #3c3c3c;
+}
+
+.toggle h4.tab-index a, .toggle h4.tab-index a:hover {
+    font-size: 16px;
+    font-family: 'Helvetica', sans-serif;
+    color: #3e3e3e;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.toggle .content-tab, .toggle .content-tab p {
+    font-size: 12px;
+    font-family: 'Helvetica', sans-serif;
+    color: #676768;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.contact-info .sidebar-nav ul li {
+    font-size: 12px;
+    font-family: 'Helvetica', sans-serif;
+    color: #676768;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.testimonial .testimonial-text p, .testimonial .testimonial-text-full p, .testimonial-page .testimonial-text-full p {
+    font-size: 11px;
+    font-family: 'Helvetica', sans-serif;
+    color: #656464;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.testimonial .testimonial-name a.name, .testimonial .testimonial-name p.name, .testimonial-page .testimonial-name a.name, .testimonial-page .testimonial-name p.name {
+    font-size: 11px;
+    font-family: 'Helvetica', sans-serif;
+    color: #656464;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.testimonials-slider ul.testimonials li blockquote p a, .testimonials-flexslider ul li blockquote p a {
+    font-size: 24px;
+    font-family: 'Helvetica', sans-serif;
+    color: #747373;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.testimonials-slider ul.testimonials li p.meta, .testimonials-slider ul.testimonials li p.meta a, .testimonials-flexslider ul li p.meta a {
+    font-size: 13px;
+    font-family: 'Helvetica', sans-serif;
+    color: #aa620d;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.testimonial .testimonial-name a.website, .testimonial .testimonial-name span.website, .testimonial-page .testimonial-name a.website, .testimonial-page .testimonial-name span.website {
+    font-size: 11px;
+    font-family: 'Helvetica', sans-serif;
+    color: #ad6302;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.testimonial-page-full .testimonial-signature p.signature {
+    font-size: 18px;
+    font-family: 'Helvetica', sans-serif;
+    color: #3a3a39;
+    font-style: normal;
+    font-weight: 400;
+}
+.slogan h3 {
+    font-size: 15px;
+    font-family: 'Helvetica', sans-serif;
+    color: #302e2e;
+    font-style: normal;
+    font-weight: 400;
+}
+.special-font, #header #logo #tagline span.special-font {
+    font-size: 12px;
+    font-family: 'Helvetica', sans-serif;
+    color: #030303;
+    font-style: normal;
+    font-weight: 400;
+}
+#back-top a, #back-top a:hover {
+    font-size: 12px;
+    font-family: 'Helvetica', sans-serif;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 400;
+}
+#nav ul li, #nav ul li a, #nav ul li a span.special-font, #nav .megamenu ul.sub-menu li.menu-item-custom-content p span.special-font, #header-right-content, .welcome_user a, .wpml a, .cart-items {
+    font-size: 13px;
+    font-family: 'Helvetica', sans-serif;
+    color: #605e5e;
+    font-style: normal;
+    font-weight: 400;
+}
+#nav ul li ul li a, #nav .megamenu ul.sub-menu li li a, #nav ul li ul li a span.special-font, #nav .megamenu ul.sub-menu li li a span.special-font, #topbar #lang_sel ul ul a, #topbar .widget ul ul a {
+    font-size: 12px;
+    font-family: 'Helvetica', sans-serif;
+    color: #605e5e;
+    font-style: normal;
+    font-weight: 400;
+}
+#nav .megamenu ul.sub-menu li a, #nav .megamenu ul.sub-menu li a span.special-font {
+    font-size: 12px;
+    font-family: 'Helvetica', sans-serif;
+    color: #605e5e;
+    font-style: normal;
+    font-weight: 700;
+}
+.home-row .home-widget p, .sidebar p, .sidebar li, .sidebar div, .sidebar a, #wp-calendar th, #wp-calendar td, .woocommerce ul.cart_list li a, .woocommerce-page ul.cart_list li a, .woocommerce ul.product_list_widget li a, .woocommerce-page ul.product_list_widget li a, .sidebar .widget.widget_rss a.rsswidget {
+    font-size: 14px;
+    font-family: 'Helvetica', sans-serif;
+    color: #302e2e;
+    font-style: normal;
+    font-weight: 400;
+}
+.testimonial-widget li blockquote p, .testimonial-widget li blockquote p:first-child {
+    font-size: 11px;
+    font-family: 'Helvetica', sans-serif;
+    color: #4f4d4d;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.testimonial-widget li .name-testimonial {
+    font-size: 14px;
+    font-family: 'Helvetica', sans-serif;
+    color: #909091;
+    font-style: normal;
+    font-weight: 400;
+}
+.sidebar h1, .sidebar h2, .sidebar h3, .sidebar h4, .sidebar h5, .sidebar h6, .home-row .home-widget h3, .sidebar .cta .border h3, .sidebar .yit_quick_contact h3, .widget.widget_onsale h3, .widget.widget_best_sellers h3, .widget.widget_recent_products h3, .widget.widget_top_rated_products h3, .widget.widget_random_products h3, .widget.widget_featured_products h3, .widget.widget_recently_viewed_products h3, .sidebar .widget.widget_rss h3 a.rsswidget, .widget.widget_recent_reviews h3{
+font-family: 'Helvetica', sans-serif;
+}
+#copyright{
+background-color:#fbf8f5;
+}
+#copyright, #copyright div p, #copyright p, #copyright a, #copyright p a, #copyright div p a{
+font-family: 'Helvetica', sans-serif;
+}
+/* Social Media Icons
+.socialIcons{
+padding-left:20px;
+padding-right:20px;
+}
+*/
