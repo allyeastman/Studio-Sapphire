@@ -204,15 +204,25 @@ function updateStatCounts(increment){
 
 function sk_populate(data){
 
+	console.log('sk_populate %o',data);
+
 	jQuery('.sk_walkthrough_list').html('');
 
-	_.each(data.products,function(item,key){
+	_.each(data,function(item,key){
 
 		if (!item.cacheId) {
 			return false;
 		}
 
 		jQuery('.sk_walkthrough_list').append('<div class="sk_product" id="' + item.cacheId + '"><b>' + item.name + '</b> (<span class="select_all">Toggle All</span>)</div>');
+
+		if (typeof sk_config.disable_wts === "string" && sk_config.disable_wts.indexOf(']') > -1) {
+			sk_config.disable_wts = JSON.parse(sk_config.disable_wts);
+		};
+
+		if (typeof sk_config.disable_network_wts === "string" && sk_config.disable_network_wts.indexOf(']') > -1) {
+			sk_config.disable_network_wts = JSON.parse(sk_config.disable_network_wts);
+		};
 
 
 		if (sk_config.disable_wts) {
@@ -237,7 +247,7 @@ function sk_populate(data){
 
 					// Clear out disabled wts so that compatibility doesn't screen out wts from this screen. Put it back after we're done.
 
-					// console.groupCollapsed('Checking Compatibilities');
+					console.groupCollapsed('Checking Compatibilities');
 
 					_.each(data.payload.buckets,function(bucket,key){
 
@@ -294,7 +304,7 @@ function sk_populate(data){
 
 					jQuery('.configure').show(); //
 
-					// console.groupEnd();//
+					console.groupEnd();//
 
 				} else { //
 					jQuery('#' + this.cacheId).remove();
@@ -302,178 +312,168 @@ function sk_populate(data){
 
 			}
 		});
-		}); //
-	} //
+}); 
+} 
 
 
 
-	function setup_events(){
-		// console.log('setup_events');
+function setup_events(){
 
-		jQuery('.select_all').click(function(){
-			var checkBoxes = jQuery(this).parent().find('input[type="checkbox"]');
+	jQuery('.select_all').click(function(){
+		var checkBoxes = jQuery(this).parent().find('input[type="checkbox"]');
 
-			_.each(checkBoxes,function(item,key){
-				jQuery(item).attr("checked", !jQuery(item).attr("checked"));
-			});
+		_.each(checkBoxes,function(item,key){
+			jQuery(item).attr("checked", !jQuery(item).attr("checked"));
 		});
+	});
 
-		jQuery('[name="disable_wts[]"]').click(function(e){
+	jQuery('[name="disable_wts[]"]').click(function(e){
 
-			if (e.currentTarget.checked) {
-				jQuery('input[value="' + e.currentTarget.value + '"]').attr('checked',true);
-			} else {
-				jQuery('input[value="' + e.currentTarget.value + '"]').attr('checked',false);
-			}
-
-		});
-
-		jQuery('.activate_all').click(function(){
-			jQuery('.activate_sk').each(function(key,item){
-				setTimeout(function() {
-					jQuery(item).trigger('click');
-				}, key*1000);
-			});
-		});
-
-		jQuery('.sk_bucket').not(':has(li)').remove();
-		jQuery('.sk_product').not(':has(li)').remove();
-
-		// Set the disable_wts back to original state
-		sk_config.disable_wts         = currently_disabled_wts;
-		sk_config.disable_network_wts = currently_disabled_network_wts;
-	}
-
-	function load_sk_library($key){
-
-		// TODO we need to switch based on library to distribute and load the right library
-
-		// console.log('BBBB load_sk_library %o', $key);
-		var sk_url;
-
-		if (loadCount > 5) {
-			console.warn('Something is wrong...');
-			return false;
-		}
-
-		if ($key) {
-			sk_url = sk_config.library + 'domains/cache?domainKey=' + $key;
+		if (e.currentTarget.checked) {
+			jQuery('input[value="' + e.currentTarget.value + '"]').attr('checked',true);
 		} else {
-			sk_url = sk_config.library + 'platform/cache?platformId=1';
-		}
-
-		loadCount++;
-
-		jQuery.ajax({
-			url: sk_url,
-			error: function(data){
-				jQuery('.sk_license_status span').html('Invalid Key').css({color: 'red'});
-				jQuery('.sk_upgrade').show();
-				load_sk_library();
-			},
-			success: function(data){
-
-				if (sk_config.library + 'domains/cache?domainKey=' + sk_config.activation_id == sk_url) {
-					if (!data.payload) {
-						jQuery('.sk_license_status').html('Invalid Key').css({color: 'red'});
-					} else {
-						jQuery('.sk_license_status').html('Valid').css({color: 'green'});
-					}
-				}
-
-				if (!data.payload) {
-					load_sk_library();
-					return false;
-				}
-
-				if (data.payload) {
-					sk_populate(data.payload);
-				}
-			}
-		});
-	}
-
-	jQuery(document).ready(function($) {
-
-		if (jQuery('.sidekick_admin').length === 0) {
-			return;
-		}
-
-		jQuery('.open_composer').click(function(e){
-			e.preventDefault();
-			jQuery('#toggle_composer').trigger('click');
-		});
-
-		if (typeof sk_ms_admin !== 'undefined' && sk_ms_admin) {
-
-			// Multisite
-			load_sites_by_status('unactivated');
-
-			var clicked_button;
-
-			if (typeof last_site_key !== 'undefined') {
-				load_sk_library(last_site_key);
-			} else {
-				jQuery('.sk_box.configure').html('Need to activate at least one site to configure walkthroughs').show();
-			}
-
-			jQuery('.activate_sk').click(function(){
-
-				clicked_button = this;
-				jQuery('.single_activation_error').html('').hide();
-
-				var data = {
-					action:  'sk_activate_single',
-					blog_id: jQuery(this).parent().data('blogid'),
-					user_id: jQuery(this).parent().data('userid'),
-					domain:  jQuery(this).parent().data('domain'),
-					path:    jQuery(this).parent().data('path')
-				};
-
-				jQuery.post(ajaxurl, data, function(e){
-
-					if (!e.success) {
-						jQuery('.single_activation_error').html(e.message).show();
-						jQuery(clicked_button).parent().html('- <span class="not_active">Error Activating</span>');
-					} else if (e.success) {
-						jQuery(clicked_button).parent().html('- <span class="green">Activated</span>');
-					}
-				},'json');
-
-			});
-
-
-
-			// if (jQuery('select[name="sk_selected_subscription"]').val().indexOf('roduct') > -1) {
-				// jQuery('.walkthrough_library').show();
-			// }
-
-			// jQuery('select[name="sk_selected_subscription"]').on('change',function(){
-			// 	if (jQuery('select[name="sk_selected_subscription"]').val().indexOf('roduct') > -1) {
-			// 		jQuery('.walkthrough_library').show();
-			// 	} else {
-			// 		jQuery('.walkthrough_library').val(0);
-			// 		jQuery('.walkthrough_library').hide();
-			// 	}
-			// });
-
-		} else {
-			jQuery(document).ready(function($) {
-				if (sk_config.activation_id) {
-					load_sk_library(sk_config.activation_id);
-				} else {
-					jQuery('.sk_upgrade').show();
-				}
-
-				jQuery('h3:contains(My Sidekick Account)').click(function(e){
-					if (e.shiftKey) {
-						jQuery('.advanced').show();
-					}
-				});
-
-			});
+			jQuery('input[value="' + e.currentTarget.value + '"]').attr('checked',false);
 		}
 
 	});
 
+	jQuery('.activate_all').click(function(){
+		jQuery('.activate_sk').each(function(key,item){
+			setTimeout(function() {
+				jQuery(item).trigger('click');
+			}, key*1000);
+		});
+	});
 
+	jQuery('.sk_bucket').not(':has(li)').remove();
+	jQuery('.sk_product').not(':has(li)').remove();
+
+	// Set the disable_wts back to original state
+	sk_config.disable_wts         = currently_disabled_wts;
+	sk_config.disable_network_wts = currently_disabled_network_wts;
+}
+
+function load_sk_library($key){
+
+	// TODO we need to switch based on library to distribute and load the right library
+
+	// console.log('BBBB load_sk_library %o', $key);
+	var sk_url;
+
+	if (loadCount > 5) {
+		// console.warn('Something is wrong...');
+		return false;
+	}
+
+	if ($key) {
+		sk_url = sk_config.library + 'domains/cache?domainKey=' + $key;
+	} else {
+		sk_url = sk_config.library + 'platform/cache?platformId=1';
+	}
+
+	loadCount++;
+
+	jQuery.ajax({
+		url: sk_url,
+		error: function(data){
+			jQuery('.sk_license_status span').html('Invalid Key').css({color: 'red'});
+			jQuery('.sk_upgrade').show();
+			load_sk_library();
+		},
+		success: function(data){
+
+			console.log('%csuccess %o','color: green',data);
+
+			if (sk_config.library + 'domains/cache?domainKey=' + sk_config.activation_id == sk_url) {
+				if (!data.payload) {
+					jQuery('.sk_license_status').html('Invalid Key').css({color: 'red'});
+				} else {
+					jQuery('.sk_license_status').html('Valid').css({color: 'green'});
+				}
+			}
+
+			if (!data.payload) {
+				console.log('loading again');
+				load_sk_library();
+				return false;
+			}
+
+			if (data.payload) {
+
+				sidekick.compatibilityModel.filter_products(data.payload.products);
+
+				sk_populate(sidekick.compatibilityModel.get('passed_products'));
+			}
+		}
+	});
+}
+
+function setup_sk_admin(){
+	console.log('setup_sk_admin');
+	if (jQuery('.sidekick_admin').length === 0) {
+		return;
+	}
+
+	jQuery('.open_composer').click(function(e){
+		e.preventDefault();
+		jQuery('#toggle_composer').trigger('click');
+	});
+
+	if (typeof sk_ms_admin !== 'undefined' && sk_ms_admin) {
+
+		// Multisite
+		load_sites_by_status('unactivated');
+
+		var clicked_button;
+
+		if (typeof last_site_key !== 'undefined') {
+			load_sk_library(last_site_key);
+		} else {
+			jQuery('.sk_box.configure').html('Need to activate at least one site to configure walkthroughs').show();
+		}
+
+		jQuery('.activate_sk').click(function(){
+
+			clicked_button = this;
+			jQuery('.single_activation_error').html('').hide();
+
+			var data = {
+				action:  'sk_activate_single',
+				blog_id: jQuery(this).parent().data('blogid'),
+				user_id: jQuery(this).parent().data('userid'),
+				domain:  jQuery(this).parent().data('domain'),
+				path:    jQuery(this).parent().data('path')
+			};
+
+			jQuery.post(ajaxurl, data, function(e){
+
+				if (!e.success) {
+					jQuery('.single_activation_error').html(e.message).show();
+					jQuery(clicked_button).parent().html('- <span class="not_active">Error Activating</span>');
+				} else if (e.success) {
+					jQuery(clicked_button).parent().html('- <span class="green">Activated</span>');
+				}
+			},'json');
+
+		});
+
+	} else {
+
+		if (sk_config.activation_id) {
+			load_sk_library(sk_config.activation_id);
+		} else {
+			jQuery('.sk_upgrade').show();
+		}
+
+		jQuery('h3:contains(My Sidekick Account)').click(function(e){
+			if (e.shiftKey) {
+				jQuery('.advanced').show();
+			}
+		});
+	}
+}
+
+// window.onload = function(){
+	// console.log('init setup_sk_admin');
+	// setup_sk_admin();	
+// }
