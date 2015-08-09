@@ -1,10 +1,10 @@
 === Sidekick ===
 Contributors: raptor235,benfox,bitwit,riavalon
 Donate link: http://www.sidekick.pro
-Tags: help, tutorial, training, learn, learning, sidekick, guide, teach, video, manual, videos, wphelp, support, instructions, question, questions, answers, answer, clippy, q&a, wpuniversity, helper, walkthrough
+Tags: help, tutorial, tutorials,screencast, self-help, training, learn, learning, sidekick, guide, teach, video, manual, videos, wphelp, support, instructions, question, questions, answers, answer, clippy, q&a, wpuniversity, helper, walkthrough
 Requires at least: 3.7
 Tested up to: 4.2
-Stable tag: 2.5.0
+Stable tag: 2.5.6
 License: GNU Version 2 or Any Later Version
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -144,6 +144,29 @@ We read and respond to every piece of feedback we get.
 4. Yet another action requirement by the user is previewed here.
 
 == Changelog ==
+
+= 2.5.5 =
+* Fixes an issue with activation
+
+= 2.5.5 =
+* Clean up of tracking routines	
+* Additional security around preference saving (Thank You Joost - @yoast)
+* Fixes to global CSS rules (Thank You Joost - @yoast)
+* Network admin screen has clearler titling for options
+
+= 2.5.4 =
+* Fixes to MultiSite saving setting (Thank You Gabe from justaddcontent.com)
+
+= 2.5.3 =
+* Add network activated plugins to compatibilities list
+* MU Plugins now have versions available for compatibility filtering
+* Optimize the multisite admin loading screen
+* Fixes just activated setting
+
+= 2.5.2 = 
+* Adjust disabled walkthroughs settings
+* Filter out non compatible products from settings screen
+* Add domain to walkthrough compatibility filter
 
 = 2.5.0 = 
 * Sidekick platform major refactoring
